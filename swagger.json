@@ -1,0 +1,201 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Rick and Morty",
+    "description": "CRUD API for Rick and Morty",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/",
+      "description": "URL de teste"
+    }
+  ],
+  "paths": {
+    "/characters/all-characters": {
+      "get": {
+        "summary": "All Characters.",
+        "description": "Route responsible for displaying all characters registered in the database.",
+        "tags": ["Rick and Morty"],
+        "responses": {
+          "206": {
+            "description": "Nenhum personagem cadastrado! (Partial content)"
+          },
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RickAndMorty"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/character/{id}": {
+      "get": {
+        "summary": "One Character",
+        "description": "Route responsible for fetching a character by the given ID.",
+        "tags": ["Rick and Morty"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do persoagem para a busca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "206": {
+            "description": "Personagem não encontrad! (Partial content)"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/RickAndMorty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/create": {
+      "post": {
+        "summary": "Create Character.",
+        "description": "Route responsible for creating a new character and adding to the database.",
+        "tags": ["Rick and Morty"],
+        "responses": {
+          "400": {
+            "description": "Envie todos os campos do personagem! (Bad Request)"
+          },
+          "201": {
+            "description": "Personagem criado com sucesso! (Created)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/RickAndMorty"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RickAndMorty"
+              },
+              "examples": {
+                "RickAndMorty": {
+                  "value": {
+                    "name": "Slippery Stair",
+                    "imageUrl": "https://rickandmortyapi.com/api/character/avatar/326.jpeg"
+                  }
+                }
+              }
+            }
+          }
+        }          
+      }
+    },
+    "/characters/update/{id}": {
+      "put": {
+        "summary": "Update Character",
+        "description": "Route responsible for editing a character by the given ID.",
+        "tags": ["Rick and Morty"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do persoagem para a busca",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RickAndMorty"
+              },
+              "examples": {
+                "RickAndMorty": {
+                  "value": {
+                    "name": "Slippery Stair",
+                    "imageUrl": "https://rickandmortyapi.com/api/character/avatar/326.jpeg"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "206": {
+            "description": "Personagem não encontrado! (Partial content)"
+          },
+          "400": {
+            "description": "Envie todos os campos do personagem! (Bad Request)"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/RickAndMorty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/delete/{id}": {
+      "delete": {
+        "summary": "Delete Character",
+        "description": "Route responsible for deleting a character by the given ID.",
+        "tags": ["Rick and Morty"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do persoagem para a busca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "206": {
+            "description": "Personagem não encontrado! (Partial content)"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RickAndMorty": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }  
+}
