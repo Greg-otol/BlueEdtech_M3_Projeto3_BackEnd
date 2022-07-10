@@ -6,7 +6,7 @@ const createCharacterController = async (req, res) => {
     character,
   );
   res.status(201).send({
-    message: `Personagem '${character.name.toUpperCase()}' criada com sucesso!`,
+    message: `Personagem '${character.name.toUpperCase()}' criado com sucesso!`,
     newCharacter,
   });
 };
@@ -37,7 +37,7 @@ const findOneCharacterControlle = async (req, res) => {
 
 const updateCharacterController = async (req, res) => {
   const idParam = req.params.id;
-  const chosenToDoList = await charactersServices.findOneCharacterService(
+  const chosenCharacter = await charactersServices.findOneCharacterService(
     idParam
   );
   const characterEdit = req.body;
@@ -46,7 +46,7 @@ const updateCharacterController = async (req, res) => {
     characterEdit
   );
   res.status(200).send({
-    message: `O personagem '${chosenToDoList.name.toUpperCase()}' foi editada para '${characterEdit.name.toUpperCase()}'!`,
+    message: `O personagem '${chosenCharacter.name.toUpperCase()}' foi editado para '${characterEdit.name.toUpperCase()}'!`,
     updatedCharacter,
   });
 };
