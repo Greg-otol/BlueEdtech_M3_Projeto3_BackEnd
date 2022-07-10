@@ -28,7 +28,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RickAndMorty"
+                    "$ref": "#/components/schemas/Character"
                   }
                 }
               }
@@ -52,7 +52,7 @@
         ],
         "responses": {
           "206": {
-            "description": "Personagem não encontrad! (Partial content)"
+            "description": "Personagem não encontrado! (Partial content)"
           },
           "200": {
             "description": "OK",
@@ -60,7 +60,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/RickAndMorty"
+                  "$ref": "#/components/schemas/Character"
                 }
               }
             }
@@ -83,7 +83,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/RickAndMorty"
+                  "$ref": "#/components/schemas/Character"
                 }
               }
             }
@@ -93,7 +93,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RickAndMorty"
+                "$ref": "#/components/schemas/Character"
               },
               "examples": {
                 "RickAndMorty": {
@@ -125,7 +125,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RickAndMorty"
+                "$ref": "#/components/schemas/Character"
               },
               "examples": {
                 "RickAndMorty": {
@@ -151,7 +151,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/RickAndMorty"
+                  "$ref": "#/components/schemas/Character"
                 }
               }
             }
@@ -185,7 +185,7 @@
   },
   "components": {
     "schemas": {
-      "RickAndMorty": {
+      "Character": {
         "type": "object",
         "properties": {
           "name": {

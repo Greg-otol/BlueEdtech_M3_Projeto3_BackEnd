@@ -11,6 +11,6 @@ const RickAndMortySchema = new mongoose.Schema({
   },
 });
 
-const RickAndMorty = mongoose.model('rickandmorty', RickAndMortySchema);
+const RickAndMorty = mongoose.model('characters', RickAndMortySchema);
 
 module.exports = RickAndMorty;
